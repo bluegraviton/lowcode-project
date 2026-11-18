@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Virtual environment
+.venv/
+
+# Local configuration and secrets (none are used in S0)
+.env
+instance/
+
+# Editor and OS
+.vscode/
+.DS_Store
+Thumbs.db

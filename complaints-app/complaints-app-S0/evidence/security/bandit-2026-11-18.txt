@@ -1,0 +1,363 @@
+﻿bandit : [main]	INFO	profile include tests: None
+At line:1 char:1
++ bandit -r app 2>&1 | Out-File -Encoding utf8 evidence\security\bandit ...
++ ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([main]	INFO	profile include tests: No 
+   ne:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.13.5
+Run started:2026-11-18 20:26:50.570112+00:00
+
+Test results:
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\complaints\tests\test_complaints_repository.py:12:4
+11	    record = repository.list_complaints()[0]
+12	    assert dataclasses.is_dataclass(record)
+13	    with pytest.raises(dataclasses.FrozenInstanceError):
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\complaints\tests\test_complaints_repository.py:19:4
+18	    record = repository.list_complaints()[0]
+19	    assert record.reference.startswith("CMP-")
+20	    assert record.received_date is not None
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\complaints\tests\test_complaints_repository.py:20:4
+19	    assert record.reference.startswith("CMP-")
+20	    assert record.received_date is not None
+21	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\complaints\tests\test_complaints_repository.py:26:4
+25	    first.clear()
+26	    assert len(repository.list_complaints()) > 0
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\complaints\tests\test_complaints_routes.py:8:4
+7	def test_home_page_returns_200(client):
+8	    assert client.get("/").status_code == 200
+9	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\complaints\tests\test_complaints_routes.py:14:4
+13	    complaints = repository.list_complaints()
+14	    assert complaints
+15	    for complaint in complaints:
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\complaints\tests\test_complaints_routes.py:16:8
+15	    for complaint in complaints:
+16	        assert complaint.reference in html
+17	        assert complaint.complainant_name in html
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\complaints\tests\test_complaints_routes.py:17:8
+16	        assert complaint.reference in html
+17	        assert complaint.complainant_name in html
+18	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\complaints\tests\test_complaints_routes.py:23:8
+22	    for label in ("Logged", "Investigating", "Pending approval", "Approved", "Closed"):
+23	        assert label in html
+24	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\complaints\tests\test_complaints_routes.py:28:4
+27	    html = client.get("/").get_data(as_text=True)
+28	    assert TestConfig.PROTOTYPE_BANNER in html
+29	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\complaints\tests\test_complaints_routes.py:33:4
+32	    html = client.get("/").get_data(as_text=True)
+33	    assert 'name="viewport"' in html
+34	    assert "table-responsive" in html
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\complaints\tests\test_complaints_routes.py:34:4
+33	    assert 'name="viewport"' in html
+34	    assert "table-responsive" in html
+35	    assert "<main" in html
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\complaints\tests\test_complaints_routes.py:35:4
+34	    assert "table-responsive" in html
+35	    assert "<main" in html
+36	    assert 'scope="col"' in html
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\complaints\tests\test_complaints_routes.py:36:4
+35	    assert "<main" in html
+36	    assert 'scope="col"' in html
+37	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\complaints\tests\test_complaints_routes.py:41:4
+40	    html = client.get("/").get_data(as_text=True)
+41	    assert "bootstrap@5.3." in html
+42	    assert "@latest" not in html
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\complaints\tests\test_complaints_routes.py:42:4
+41	    assert "bootstrap@5.3." in html
+42	    assert "@latest" not in html
+43	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\complaints\tests\test_complaints_routes.py:46:4
+45	def test_home_page_rejects_post(client):
+46	    assert client.post("/").status_code == 405
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\complaints\tests\test_complaints_services.py:8:4
+7	def test_one_row_per_complaint():
+8	    assert len(services.list_complaint_rows()) == len(repository.list_complaints())
+9	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\complaints\tests\test_complaints_services.py:13:8
+12	    for row in services.list_complaint_rows():
+13	        assert row.product_label in PRODUCT_LABELS.values()
+14	        assert row.category_label in CATEGORY_LABELS.values()
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\complaints\tests\test_complaints_services.py:14:8
+13	        assert row.product_label in PRODUCT_LABELS.values()
+14	        assert row.category_label in CATEGORY_LABELS.values()
+15	        assert row.status_label in STATUS_LABELS.values()
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\complaints\tests\test_complaints_services.py:15:8
+14	        assert row.category_label in CATEGORY_LABELS.values()
+15	        assert row.status_label in STATUS_LABELS.values()
+16	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\complaints\tests\test_complaints_services.py:20:4
+19	    dates = [row.received_date for row in services.list_complaint_rows()]
+20	    assert dates == sorted(dates, reverse=True)
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\health\tests\test_health.py:6:4
+5	    response = client.get("/health")
+6	    assert response.status_code == 200
+7	    assert response.is_json
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\health\tests\test_health.py:7:4
+6	    assert response.status_code == 200
+7	    assert response.is_json
+8	    assert response.get_json() == {"status": "ok"}
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\health\tests\test_health.py:8:4
+7	    assert response.is_json
+8	    assert response.get_json() == {"status": "ok"}
+9	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\health\tests\test_health.py:13:4
+12	    body = client.get("/health").get_data(as_text=True)
+13	    assert "CMP-" not in body
+14	    assert "example.com" not in body
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\health\tests\test_health.py:14:4
+13	    assert "CMP-" not in body
+14	    assert "example.com" not in body
+15	
+
+--------------------------------------------------
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html
+   Location: app\features\health\tests\test_health.py:18:4
+17	def test_health_rejects_non_get_methods(client):
+18	    assert client.post("/health").status_code == 405
+
+--------------------------------------------------
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'None'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html
+   Location: app\sample_data.py:53:8
+52	        "email": "aoife.marlowe@example.com",
+53	        "password_hash": None,
+54	        "role": ROLE_HANDLER,
+55	        "active": True,
+56	        "created_at": _utc(2026, 1, 5),
+57	    },
+58	    {
+59	        "id": 2,
+60	        "name": "Cathal Reddin",
+61	        "email": "cathal.reddin@example.com",
+62	        "password_hash": None,
+
+--------------------------------------------------
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'None'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html
+   Location: app\sample_data.py:62:8
+61	        "email": "cathal.reddin@example.com",
+62	        "password_hash": None,
+63	        "role": ROLE_HANDLER,
+64	        "active": True,
+65	        "created_at": _utc(2026, 1, 5),
+66	    },
+67	    {
+68	        "id": 3,
+69	        "name": "Niamh Kilbride",
+70	        "email": "niamh.kilbride@example.com",
+71	        "password_hash": None,
+
+--------------------------------------------------
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'None'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html
+   Location: app\sample_data.py:71:8
+70	        "email": "niamh.kilbride@example.com",
+71	        "password_hash": None,
+72	        "role": ROLE_COMPLIANCE,
+73	        "active": True,
+74	        "created_at": _utc(2026, 1, 5),
+75	    },
+76	]
+77	
+78	# Defaults for fields that are not yet applicable to a complaint.
+79	_NOT_YET = {
+80	    "complainant_phone": None,
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 517
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 31
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 3
+		High: 28
+Files skipped (0):

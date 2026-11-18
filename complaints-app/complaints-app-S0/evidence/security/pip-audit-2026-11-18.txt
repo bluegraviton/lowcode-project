@@ -1,0 +1,8 @@
+﻿pip-audit : No known vulnerabilities found
+At line:1 char:1
++ pip-audit -r requirements.txt 2>&1 | Out-File -Encoding utf8 evidence ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (No known vulnerabilities found:String 
+   ) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
