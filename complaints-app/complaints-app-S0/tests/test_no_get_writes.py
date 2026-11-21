@@ -26,3 +26,16 @@ def test_get_requests_do_not_change_the_data(app, client):
 
     assert (sample_data.USERS, sample_data.COMPLAINTS) == raw_before
     assert repository.list_complaints() == records_before
+
+
+def test_every_get_route_is_covered(app):
+    # Flask's built-in static route takes a path argument; it serves files only.
+    uncovered = sorted(
+        rule.rule
+        for rule in app.url_map.iter_rules()
+        if "GET" in rule.methods and rule.arguments and rule.endpoint != "static"
+    )
+    assert uncovered == [], (
+        "GET routes with path parameters are not exercised by the no-write "
+        f"test; extend it before adding them: {uncovered}"
+    )

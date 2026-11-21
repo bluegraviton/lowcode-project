@@ -8,7 +8,7 @@ Tested with Python 3.12; Python 3.10 or later is expected to work. Open the proj
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+.\\.venv\\Scripts\\Activate.ps1
 pip install -r requirements-dev.txt
 flask --app app run --debug
 ```
@@ -19,7 +19,7 @@ If activation is blocked ("running scripts is disabled"), allow scripts for this
 
 ```powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-.\.venv\Scripts\Activate.ps1
+.\\.venv\\Scripts\\Activate.ps1
 ```
 
 Run the tests:
@@ -28,9 +28,13 @@ Run the tests:
 pytest
 ```
 
+\--debug is for local use only. Never use it on a network-facing server.
+
+
+
 ### Select the interpreter in VS Code
 
-Press Ctrl+Shift+P, choose **Python: Select Interpreter**, then pick the one under `.venv` (it shows `.\.venv\Scripts\python.exe`). Open a new terminal afterwards; it should show `(.venv)` at the start of the prompt.
+Press Ctrl+Shift+P, choose **Python: Select Interpreter**, then pick the one under `.venv` (it shows `.\\.venv\\Scripts\\python.exe`). Open a new terminal afterwards; it should show `(.venv)` at the start of the prompt.
 
 ### macOS and Linux
 
@@ -57,9 +61,9 @@ Save each output under `evidence/security/` with the date and a one-line caption
 
 ```
 app/
-  __init__.py       create_app() and the ONE FEATURES list
+  \_\_init\_\_.py       create\_app() and the ONE FEATURES list
   config.py         all enumerations and tunables; Config and TestConfig
-  sample_data.py    synthetic users and complaints (repository files only)
+  sample\_data.py    synthetic users and complaints (repository files only)
   templates/        shared layout (base.html)
   features/
     health/         GET /health
@@ -70,16 +74,17 @@ evidence/           automations, security, diagrams, deployment, ai
 docs/               limitations register, decision log
 ```
 
-Request chain: route, then service, then repository, then sample data. Routes only render. Services hold logic and call only their own repository. Only `repository.py` files import `app.sample_data`; a test enforces this.
+Request chain: route, then service, then repository, then sample data. Routes only render. Services hold logic and call only their own repository. Only `repository.py` files import `app.sample\_data`; a test enforces this.
 
 ## Add a feature
 
-1. Create `app/features/<name>/` with `__init__.py` (containing `register(app)`), `routes.py`, `services.py`, `repository.py`, `templates/<name>/` and `tests/`. Use the Blueprint name `<name>`; test file names must be unique across the project (prefix with the feature name).
-2. Add one line to `FEATURES` in `app/__init__.py`, with its import.
+1. Create `app/features/<name>/` with `\_\_init\_\_.py` (containing `register(app)`), `routes.py`, `services.py`, `repository.py`, `templates/<name>/` and `tests/`. Use the Blueprint name `<name>`; test file names must be unique across the project (prefix with the feature name).
+2. Add one line to `FEATURES` in `app/\_\_init\_\_.py`, with its import.
 3. Put any new enumerations in `app/config.py`.
 
 A test fails if a feature folder exists but is missing from `FEATURES`. Full checklist: Build Plan Section 8.6.
 
 ## Where SQLite plugs in
 
-Only `repository.py` files change. In S1 and S2b each feature's `repository.py` is rewritten to read from SQLite instead of `app.sample_data`. Function names, arguments and returned field names stay the same (the field names already match the Core Spec Section 7 tables), so services, routes and templates do not change. PostgreSQL arrives at step M1 with no repository edits expected.
+Only `repository.py` files change. In S1 and S2b each feature's `repository.py` is rewritten to read from SQLite instead of `app.sample\_data`. Function names, arguments and returned field names stay the same (the field names already match the Core Spec Section 7 tables), so services, routes and templates do not change. PostgreSQL arrives at step M1 with no repository edits expected.
+
